@@ -1,0 +1,404 @@
+/* 1. RESET UNIVERSAL Y VARIABLES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* Hace que al tocar el menú baje suavemente */
+  scroll-padding-top: 90px; /* Evita que el menú tape los títulos al bajar */
+}
+
+body {
+  background-color: #030913;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Blue {
+  color: #008dff;
+}
+
+/* 2. HEADER (MENÚ SUPERIOR CON EFECTO VIDRIO) */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 5%;
+  position: sticky;
+  top: 0;
+  background-color: rgba(3, 9, 19, 0.75);
+  backdrop-filter: blur(12px); /* Desenfoca el fondo para que no choque el texto */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 100;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.header-logo img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.menu a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+}
+
+.menu a:hover {
+  color: #008dff;
+}
+
+/* 3. SECCIÓN INICIO (PORTADA / HERO) */
+.inicio {
+  /* Agregamos un degradado oscuro arriba de tu imagen para que el texto siempre se lea bien */
+  background-image: 
+    linear-gradient(to bottom, rgba(3, 9, 19, 0.35), rgba(3, 9, 19, 0.92)),
+    url("portada-montana.webp");
+  width: 92%;
+  max-width: 1100px;
+  min-height: 68vh;
+  margin: 20px auto 0; /* Centrado perfecto en cualquier pantalla */
+  padding: 48px 24px;
+  border-radius: 24px;
+  border: 1px solid #172b43;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 20px 50px rgba(0, 141, 255, 0.08);
+}
+
+h1 {
+  font-weight: 800;
+  max-width: 680px;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.15;
+}
+
+.inicio p {
+  color: #cbd5e1;
+  max-width: 520px;
+  text-align: center;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+.Button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.verservicios {
+  background-color: #008dff;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.verservicios:hover {
+  background-color: #0077d6;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 141, 255, 0.4);
+}
+
+.contactame {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.contactame:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  transform: translateY(-3px);
+}
+
+/* 4. SISTEMA DE CONTENEDORES (Alinea Servicios, Proyectos y Contacto igual) */
+.seccion-contenedor {
+  width: 92%;
+  max-width: 1050px;
+  margin: 110px auto 0;
+}
+
+.seccion-cabecera {
+  margin-bottom: 36px;
+}
+
+.seccion-cabecera h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.seccion-cabecera p {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+/* 5. TARJETAS DE SERVICIOS */
+.card-container {
+  display: grid;
+  /* Truco profesional: crea columnas automáticas sin salirse nunca de la pantalla */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 26px;
+  background-color: #081525;
+  border: 1px solid #172b43;
+  border-radius: 18px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card img {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+}
+
+.card p {
+  color: #94a3b8;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #008dff;
+  box-shadow: 0 12px 30px rgba(0, 141, 255, 0.12);
+}
+
+/* 6. CARRUSEL DE PROYECTOS */
+.carrusel {
+  width: 100%;
+  height: 360px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carrusel-card {
+  position: relative;
+  flex: 0 0 32%;
+  height: 300px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Empuja el texto hacia abajo para no tapar la imagen */
+  background-color: #081525;
+  border: 1px solid #172b43;
+  border-radius: 18px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0.6;
+  filter: brightness(0.6);
+  transform: scale(0.9);
+  transition: all 0.4s ease;
+}
+
+.carrusel-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Fondos de los proyectos con capa oscura abajo para leer perfecto */
+.proyecto-1 {
+  background-image: 
+    linear-gradient(to top, rgba(3, 9, 19, 0.95) 15%, rgba(3, 9, 19, 0.15) 75%),
+    url("avatar-felino-alta-fidelidad.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+.proyecto-2 {
+  background-image: radial-gradient(circle at top right, #112d4e, #081525 70%);
+}
+
+.proyecto-3 {
+  background-image: radial-gradient(circle at top left, #0f3156, #081525 70%);
+}
+
+.tag {
+  display: inline-block;
+  background-color: rgba(0, 141, 255, 0.2);
+  color: #4db0ff;
+  border: 1px solid rgba(0, 141, 255, 0.4);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.carrusel-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.carrusel-card p {
+  color: #cbd5e1;
+  font-size: 0.88rem;
+}
+
+
+.carrusel:has(.input1:checked) .proyecto-3,
+.carrusel:has(.input2:checked) .proyecto-1,
+.carrusel:has(.input3:checked) .proyecto-2 {
+  order: 1;
+}
+
+.carrusel:has(.input1:checked) .proyecto-1,
+.carrusel:has(.input2:checked) .proyecto-2,
+.carrusel:has(.input3:checked) .proyecto-3 {
+  order: 2;
+  flex-basis: 44%;
+  margin-left: -4%;
+  margin-right: -4%;
+  z-index: 2;
+  transform: scale(1);
+  opacity: 1;
+  filter: brightness(1);
+  border-color: #008dff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.carrusel:has(.input1:checked) .proyecto-2,
+.carrusel:has(.input2:checked) .proyecto-3,
+.carrusel:has(.input3:checked) .proyecto-1 {
+  order: 3;
+}
+
+
+.contactos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.contacto-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  background-color: #081525;
+  border: 1px solid #172b43;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  overflow-wrap: anywhere;
+}
+
+a.contacto-item:hover {
+  transform: translateY(-4px);
+  border-color: #008dff;
+}
+
+.contacto-item img {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+
+footer {
+  margin-top: 100px;
+  padding: 32px 5%;
+  text-align: center;
+  border-top: 1px solid #172b43;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 650px) {
+  header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  nav ul {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .inicio {
+    min-height: 55vh;
+    padding: 36px 16px;
+  }
+
+  .seccion-contenedor {
+    margin-top: 70px;
+  }
+
+  .carrusel {
+    height: 310px;
+  }
+
+  .carrusel-card {
+    height: 250px;
+    padding: 16px;
+  }
+
+  .carrusel:has(.input1:checked) .proyecto-1,
+  .carrusel:has(.input2:checked) .proyecto-2,
+  .carrusel:has(.input3:checked) .proyecto-3 {
+    flex-basis: 64%;
+    margin-left: -10%;
+    margin-right: -10%;
+  }
+}

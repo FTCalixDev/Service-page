@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+<title id="title">Avatar felino de CalixDev</title>
+<desc id="desc">Retrato felino geométrico en tres cuartos mirando hacia la derecha: cabeza negra, acentos azul eléctrico, ojo claro y hocico blanco dentro de un círculo oscuro.</desc>
+<defs>
+  <radialGradient id="disc" cx="48%" cy="40%" r="75%"><stop offset="0" stop-color="#142238"/><stop offset="1" stop-color="#08111F"/></radialGradient>
+  <clipPath id="clip"><circle cx="200" cy="200" r="188"/></clipPath>
+</defs>
+<circle cx="200" cy="200" r="190" fill="url(#disc)"/>
+<g clip-path="url(#clip)">
+  <!-- Silueta principal: perfil de tres cuartos hacia la derecha -->
+  <path d="M80 265 80 103 137 150Q171 124 211 134L292 80 282 164Q311 196 313 230Q317 270 288 298L266 326 246 358 218 365 199 348Q151 347 117 315Q91 291 80 265Z" fill="#020711"/>
+  <!-- Oreja trasera y brillo azul como en el avatar de referencia -->
+  <path d="M82 111 135 151 158 171 139 207 111 266 91 292 84 251Z" fill="#078DFF"/>
+  <path d="M90 126 130 157 145 181 116 244 101 267 97 215Z" fill="#020711"/>
+  <path d="M82 111 135 151 158 171" fill="none" stroke="#078DFF" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Mechones de la parte trasera -->
+  <path d="M84 233 72 221 82 263 73 277 91 294 91 275Z" fill="#078DFF"/>
+  <path d="M97 292 111 314 138 337 128 316 111 301Z" fill="#0876E2"/>
+  <!-- Oreja frontal: negra, borde azul y pequeño reflejo frío -->
+  <path d="M292 83 282 164 300 198 318 231 314 177 309 117Z" fill="#050C17"/>
+  <path d="M292 83 282 164 299 198" fill="none" stroke="#078DFF" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M280 177 293 210 295 232 286 248" fill="none" stroke="#C8E2FF" stroke-width="5" stroke-linecap="round"/>
+  <path d="M277 179 288 211 289 231" fill="none" stroke="#078DFF" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Frente y plano oscuro de la cara -->
+  <path d="M144 151Q175 132 209 137L237 142 215 159 182 173 149 177Z" fill="#071426"/>
+  <path d="M170 179Q203 160 246 178L277 207 269 241 244 262 202 254 178 226Z" fill="#020711"/>
+  <!-- Único ojo visible, afilado y frío -->
+  <path d="M190 221Q217 207 242 224L229 240Q208 244 194 233Z" fill="#EAF5FF"/>
+  <path d="M198 225Q218 215 236 226L226 235Q211 238 199 231Z" fill="#078DFF"/>
+  <path d="M218 221Q230 223 227 235Q224 241 218 238Z" fill="#020711"/>
+  <path d="M187 219 208 211 240 218" fill="none" stroke="#020711" stroke-width="7" stroke-linecap="round"/>
+  <!-- Hocico claro proyectado hacia la derecha -->
+  <path d="M209 246Q234 236 257 242L282 247 303 260 311 272 302 283Q293 286 284 294L270 303 246 305Q226 299 213 283L204 268Z" fill="#EAF5FF"/>
+  <path d="M214 253 239 256 259 263 247 272 228 271 216 265Z" fill="#BFDFFF"/>
+  <path d="M224 280Q246 277 267 281L284 287 273 296 256 300 239 299Z" fill="#FFFFFF"/>
+  <!-- Nariz y boca -->
+  <path d="M300 261 314 265 308 276 296 273Z" fill="#030813"/>
+  <path d="M307 276Q302 288 287 293L269 300 249 299" fill="none" stroke="#07101D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M222 298 237 308 249 309 239 319 224 314Z" fill="#B9D8F4"/>
+  <!-- Reflejo azul en el cuello -->
+  <path d="M251 348 270 323 284 303 273 330 261 354 246 366Z" fill="#078DFF"/>
+  <path d="M265 343 284 314 291 306 279 335Z" fill="#0A7EE8"/>
+</g>
+</svg>

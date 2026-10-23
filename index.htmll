@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-logo"><img src="logo-felino.svg" alt="logo"><a href="#">Calix<span class="Blue">Dev</span></a></div>
+        <nav>
+          <ul>
+            <li class="menu"><a href="#inicio">Inicio</a></li>
+            <li class="menu"><a href="#servicios">Sobre mi</a></li>
+            <li class="menu"><a href="#servicios">Servicios</a></li>
+            <li class="menu"><a href="#">Contacto</a></li>
+          </ul>
+        </nav>
+        
+    </header>
+    <main>
+        <section id="inicio" class="inicio">
+            
+            <h1>Ideas que se convierten en <br> <span class="Blue">páginas web.</span></h1>
+            <p>Desarrollo sitios web modernos, rápidos y adaptados a tus necesidades. Desde paginas personales hasta negocios, todo en un solo lugar</p>
+        <div class="Button-container">
+            <a class="verservicios" href="#">Ver servicios ⮕</a>
+            <a class="contactame" href="#">Contactame</a>
+        </div>
+            
+        </section>
+        <section class="servicios-container">
+           
+            <h2  id="servicios">Servicios</h2>
+            <p>soluciones simples y efectivas para tu presencia en internet</p>
+            <div class="card-container">
+                <div class="card c1"><img src="paginas-estaticas.svg" alt=""><h3>Páginas estáticas</h3><p>Sitios rápidos, ligeros y seguros, ideales para portafolios, loading pages y proyectos personales</p></div>
+            <div class="card c2"><img src="diseno-responsive.svg" alt=""><h3>Diseño responsive</h3><p>Tu sitio se verá perfecto en celulares, tablets y computadoras.</p></div>
+            <div class="card c3"><img src="personalizacion.svg" alt=""><h3>Personalización</h3><p>Diseños limpios, modernos y adaptados a tu estilo o marca</p></div>
+            </div>
+        </section>
+        <section class="proyector">
+            <h2>Proyectos</h2>
+            <p>Proyectos hechos por mí</p>
+
+            <div class="carrusel">
+                <label class="carrusel-card proyecto-1">
+                    <input class="input1" type="radio" name="proyecto" checked>
+                    <h4>1Porject name</h4>
+                    <p>Project description</p>
+                </label>
+                <label class="carrusel-card proyecto-2">
+                    <input class="input2" type="radio" name="proyecto">
+                    <h4>2Porject name</h4>
+                    <p>Project description</p>
+                </label>
+                <label class="carrusel-card proyecto-3">
+                    <input class="input3" type="radio" name="proyecto">
+                    <h4>3Porject name</h4>
+                    <p>Project description</p>
+                </label>
+            </div>
+        </section>
+        <section class="contacto">
+            <div class="div1">
+                 <h3>Contacto</h3>
+            <p>¿Tenés una idea? ¡Contactame!</p>
+            </div>
+            <div class="contactos-container" >
+                 <div class="correo">
+                
+                <p><img id="emailsvg" src="email.svg" alt="">thiagomastandrea12@gmail.com</p>
+            </div>
+            <div class="whatsapp">
+                
+                <p> <img id="whatsappsvg" src="whatsapp (2).svg" alt="">+598 99 123 456</p>
+            </div>
+            <div class="ubicacion">
+                
+                <p><img id="ubicacionsvg" src="ubicacion.svg" alt="">Uruguay</p>
+            </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
