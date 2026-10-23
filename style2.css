@@ -402,3 +402,195 @@ footer {
     margin-right: -10%;
   }
 }
+
+
+
+
+//* 7. CATÁLOGO DE PRECIOS Y DISEÑO (SUBPÁGINA) */
+.servicio-card {
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.servicio-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.card-destacada {
+  border-color: #008dff;
+  background-image: radial-gradient(circle at top right, #112d4e, #081525 70%);
+  box-shadow: 0 12px 30px rgba(0, 141, 255, 0.12);
+}
+
+.precio-rango {
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 6px;
+  line-height: 1.2;
+}
+
+.moneda {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #008dff;
+}
+
+.nota-complejidad {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+.servicio-desc {
+  margin-bottom: 18px;
+}
+
+.servicio-incluye {
+  list-style: none;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #172b43;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.servicio-incluye li {
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.desglose-box {
+  width: 100%;
+  background-color: rgba(3, 9, 19, 0.55);
+  border: 1px solid #172b43;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.desglose-box h4 {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.desglose-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 6px;
+}
+
+.desglose-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.desglose-item strong {
+  color: #ffffff;
+}
+
+/* Botón +Info interactivo (:has + input) */
+.btn-mas-info {
+  position: relative;
+  margin-top: 16px;
+  width: 100%;
+  padding: 10px 14px;
+  background-color: rgba(0, 141, 255, 0.1);
+  border: 1px solid rgba(0, 141, 255, 0.35);
+  border-radius: 10px;
+  color: #4db0ff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-mas-info:hover {
+  background-color: rgba(0, 141, 255, 0.2);
+  border-color: #008dff;
+}
+
+.btn-mas-info input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.info-desplegable {
+  display: none;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px 16px;
+  background-color: #030913;
+  border: 1px solid #008dff;
+  border-radius: 12px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-desplegable p {
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.info-desplegable strong {
+  color: #4db0ff;
+}
+
+.servicio-top:has(.info-check:checked) .info-desplegable {
+  display: flex;
+}
+
+.servicio-top:has(.info-check:checked) .btn-mas-info {
+  background-color: #008dff;
+  color: #ffffff;
+}
+
+.btn-servicio {
+  width: 100%;
+  text-align: center;
+}
+
+.cabecera-dudas {
+  margin-top: 48px;
+  margin-bottom: 20px;
+}
+
+.nota-mercado {
+  margin-top: 36px;
+  padding: 18px 22px;
+  background-color: rgba(8, 21, 37, 0.45);
+  border: 1px solid #172b43;
+  border-radius: 14px;
+}
+
+.nota-mercado p {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.nota-mercado strong {
+  color: #cbd5e1;
+}
