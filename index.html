@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalixDev | Desarrollo Web Profesional en Uruguay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-main: #030913;
+            --bg-card: #081525;
+            --bg-card-hover: #0c1f36;
+            --border-color: #172b43;
+            --blue-primary: #008dff;
+            --blue-light: #4db0ff;
+            --blue-glow: rgba(0, 141, 255, 0.35);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --text-light: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(0, 141, 255, 0.08), transparent 35%),
+                radial-gradient(circle at 85% 60%, rgba(0, 141, 255, 0.06), transparent 40%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .Blue {
+            color: var(--blue-primary);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #008dff, #60bdff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 5%;
+            position: sticky;
+            top: 0;
+            background-color: rgba(3, 9, 19, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            z-index: 1000;
+            transition: padding 0.3s ease, background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 5%;
+            background-color: rgba(3, 9, 19, 0.95);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .header-logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover img {
+            transform: rotate(-6deg) scale(1.08);
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .menu a {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .menu a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--blue-primary);
+            transition: width 0.25s ease;
+        }
+
+        .menu a:hover {
+            color: #ffffff;
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background-color: rgba(0, 141, 255, 0.14);
+            color: var(--blue-light);
+            border: 1px solid rgba(0, 141, 255, 0.4);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--blue-primary);
+            color: #ffffff;
+            box-shadow: 0 0 20px var(--blue-glow);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* --- HERO SECTION --- */
+        .inicio {
+            background-image: 
+                linear-gradient(to bottom, rgba(3, 9, 19, 0.45), rgba(3, 9, 19, 0.94)),
+                url("portada-montana.webp");
+            width: 92%;
+            max-width: 1100px;
+            min-height: 72vh;
+            margin: 24px auto 0;
+            padding: 56px 24px;
+            border-radius: 26px;
+            border: 1px solid var(--border-color);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 22px;
+            box-shadow: 0 25px 60px rgba(0, 141, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(8, 21, 37, 0.85);
+            border: 1px solid rgba(0, 141, 255, 0.4);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--blue-light);
+            backdrop-filter: blur(8px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #10b981;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.65; }
+        }
+
+        h1 {
+            font-weight: 800;
+            max-width: 740px;
+            text-align: center;
+            font-size: clamp(2.1rem, 5vw, 3.6rem);
+            line-height: 1.12;
+            letter-spacing: -1px;
+        }
+
+        .inicio p {
+            color: var(--text-light);
+            max-width: 560px;
+            text-align: center;
+            font-size: clamp(0.96rem, 2vw, 1.12rem);
+        }
+
+        .Button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 6px;
+        }
+
+        .verservicios {
+            background-color: var(--blue-primary);
+            color: #ffffff;
+            padding: 13px 28px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        .verservicios:hover {
+            background-color: #0077d6;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 141, 255, 0.45);
+        }
+
+        .contactame {
+            background-color: rgba(255, 255, 255, 0.06);
+            padding: 13px 28px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .contactame:hover {
+            background-color: rgba(255, 255, 255, 0.14);
+            border-color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .hero-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 18px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-item strong {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .metric-item span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- LAYOUT CONTAINERS --- */
+        .seccion-contenedor {
+            width: 92%;
+            max-width: 1050px;
+            margin: 110px auto 0;
+        }
+
+        .seccion-cabecera {
+            margin-bottom: 38px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .seccion-cabecera h2 {
+            font-size: clamp(1.7rem, 3vw, 2.3rem);
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .seccion-cabecera p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- TARJETAS DE SERVICIOS --- */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 32px 26px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            position: relative;
+        }
+
+        .card img {
+            width: 46px;
+            height: 46px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--blue-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: var(--blue-primary);
+            background-color: var(--bg-card-hover);
+            box-shadow: 0 16px 36px rgba(0, 141, 255, 0.14);
+        }
+
+        .card:hover .card-link {
+            gap: 10px;
+            color: #ffffff;
+        }
+
+        /* --- CARRUSEL DE PROYECTOS INTERACTIVO --- */
+        .carrusel-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .carrusel {
+            width: 100%;
+            height: 380px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .carrusel-card {
+            position: relative;
+            flex: 0 0 32%;
+            height: 320px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0.55;
+            filter: brightness(0.65);
+            transform: scale(0.88);
+            transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .carrusel-card input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .proyecto-1 {
+            background-image: 
+                linear-gradient(to top, rgba(3, 9, 19, 0.96) 18%, rgba(3, 9, 19, 0.15) 75%),
+                url("avatar-felino-alta-fidelidad.webp");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .proyecto-2 {
+            background-image: 
+                linear-gradient(to top, rgba(3, 9, 19, 0.96) 20%, rgba(0, 141, 255, 0.12) 100%),
+                radial-gradient(circle at top right, #133963, #081525 70%);
+        }
+
+        .proyecto-3 {
+            background-image: 
+                linear-gradient(to top, rgba(3, 9, 19, 0.96) 20%, rgba(16, 185, 129, 0.1) 100%),
+                radial-gradient(circle at top left, #0f355c, #081525 70%);
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: rgba(0, 141, 255, 0.2);
+            color: var(--blue-light);
+            border: 1px solid rgba(0, 141, 255, 0.45);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        .carrusel-card h4 {
+            font-size: 1.28rem;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .carrusel-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 14px;
+        }
+
+        .card-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: rgba(0, 141, 255, 0.85);
+            padding: 8px 16px;
+            border-radius: 999px;
+            width: fit-content;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .carrusel:has(.input1:checked) .proyecto-3,
+        .carrusel:has(.input2:checked) .proyecto-1,
+        .carrusel:has(.input3:checked) .proyecto-2 {
+            order: 1;
+        }
+
+        .carrusel:has(.input1:checked) .proyecto-1,
+        .carrusel:has(.input2:checked) .proyecto-2,
+        .carrusel:has(.input3:checked) .proyecto-3 {
+            order: 2;
+            flex-basis: 46%;
+            margin-left: -4%;
+            margin-right: -4%;
+            z-index: 3;
+            transform: scale(1);
+            opacity: 1;
+            filter: brightness(1);
+            border-color: var(--blue-primary);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 141, 255, 0.2);
+        }
+
+        .carrusel:has(.input1:checked) .proyecto-1 .card-cta-btn,
+        .carrusel:has(.input2:checked) .proyecto-2 .card-cta-btn,
+        .carrusel:has(.input3:checked) .proyecto-3 .card-cta-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .carrusel:has(.input1:checked) .proyecto-2,
+        .carrusel:has(.input2:checked) .proyecto-3,
+        .carrusel:has(.input3:checked) .proyecto-1 {
+            order: 3;
+        }
+
+        .carrusel-controles {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .ctrl-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ctrl-btn:hover {
+            border-color: var(--blue-primary);
+            background-color: var(--blue-primary);
+        }
+
+        .carrusel-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background-color: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            width: 28px;
+            background-color: var(--blue-primary);
+        }
+
+        /* --- CONTACTO --- */
+        .contactos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 22px 24px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            overflow-wrap: anywhere;
+        }
+
+        a.contacto-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--blue-primary);
+            box-shadow: 0 10px 25px rgba(0, 141, 255, 0.12);
+        }
+
+        .contacto-item img {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            object-fit: contain;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 100px;
+            padding: 36px 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMACIONES DE ENTRADA --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 720px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(3, 9, 19, 0.97);
+                border-bottom: 1px solid var(--border-color);
+                padding: 0 5%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease, padding 0.35s ease;
+            }
+
+            nav.open {
+                max-height: 320px;
+                padding: 20px 5%;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 18px;
+                align-items: flex-start;
+            }
+
+            .inicio {
+                min-height: 60vh;
+                padding: 40px 18px;
+            }
+
+            .hero-metrics {
+                gap: 20px;
+            }
+
+            .seccion-contenedor {
+                margin-top: 75px;
+            }
+
+            .carrusel {
+                height: 320px;
+            }
+
+            .carrusel-card {
+                height: 270px;
+                padding: 18px;
+            }
+
+            .carrusel:has(.input1:checked) .proyecto-1,
+            .carrusel:has(.input2:checked) .proyecto-2,
+            .carrusel:has(.input3:checked) .proyecto-3 {
+                flex-basis: 72%;
+                margin-left: -12%;
+                margin-right: -12%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <a href="#inicio" class="header-logo">
+            <img src="logo-felino.svg" alt="Logo CalixDev">
+            <span>Calix<span class="Blue">Dev</span></span>
+        </a>
+
+        <button class="menu-toggle" id="menu-btn" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="nav-menu">
+            <ul>
+                <li class="menu"><a href="#inicio">Inicio</a></li>
+                <li class="menu"><a href="#servicios">Servicios</a></li>
+                <li class="menu"><a href="#proyectos">Proyectos</a></li>
+                <li class="menu"><a href="#contacto">Contacto</a></li>
+                <li><a href="servicios.html" class="nav-cta">Ver Tarifas $U</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECCION INICIO -->
+        <section id="inicio" class="inicio">
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                <span>Desarrollo Web en Uruguay — Cupos disponibles</span>
+            </div>
+
+            <h1>Ideas que se convierten en <br> <span class="gradient-text">páginas web.</span></h1>
+            <p>Desarrollo sitios web modernos, rápidos y adaptados a tu negocio. Desde catálogos digitales hasta páginas completas listas para vender más por WhatsApp.</p>
+
+            <div class="Button-container">
+                <a class="verservicios" href="servicios.html">Ver precios y planes ➔</a>
+                <a class="contactame" href="#proyectos">Explorar proyectos</a>
+            </div>
+
+            <div class="hero-metrics">
+                <div class="metric-item">
+                    <strong>24 - 72 hs</strong>
+                    <span>Entrega rápida</span>
+                </div>
+                <div class="metric-item">
+                    <strong>100%</strong>
+                    <span>Adaptado a celulares</span>
+                </div>
+                <div class="metric-item">
+                    <strong>30 Días</strong>
+                    <span>Garantía incluida</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCION SERVICIOS -->
+        <section id="servicios" class="seccion-contenedor reveal">
+            <div class="seccion-cabecera">
+                <div>
+                    <h2>Servicios <span class="Blue">Principales</span></h2>
+                    <p>Soluciones simples, rápidas y efectivas para tu presencia en internet.</p>
+                </div>
+                <a href="servicios.html" class="nav-cta">Ver tabla de precios completa ➔</a>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <img src="paginas-estaticas.svg" alt="Icono código">
+                    <h3>Páginas Estáticas & Menús</h3>
+                    <p>Sitios rápidos, ligeros y seguros en una sola vista. Ideales para mostrar tu catálogo, ubicación en Google Maps y recibir pedidos directos por WhatsApp.</p>
+                    <a href="servicios.html#precios" class="card-link">Desde $1.800 $U ➔</a>
+                </div>
+                <div class="card">
+                    <img src="diseno-responsive.svg" alt="Icono pantallas">
+                    <h3>Landing Pages Comerciales</h3>
+                    <p>Páginas completas divididas por secciones con menú interactivo, galería de fotos y diseño que se adapta perfecto a celulares, tablets y computadoras.</p>
+                    <a href="servicios.html#precios" class="card-link">Desde $3.000 $U ➔</a>
+                </div>
+                <div class="card">
+                    <img src="personalizacion.svg" alt="Icono diseño">
+                    <h3>Diseño & Dominio Propio</h3>
+                    <p>Diseños personalizados al estilo de tu marca, opción de alojamiento gratuito las 24 hs o configuración de tu propio link exclusivo .com con soporte mensual.</p>
+                    <a href="servicios.html#hosting" class="card-link">Ver opciones de alojamiento ➔</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCION PROYECTOS -->
+        <section id="proyectos" class="seccion-contenedor reveal">
+            <div class="seccion-cabecera">
+                <div>
+                    <h2>Proyectos y <span class="Blue">Demostraciones</span></h2>
+                    <p>Deslizá o tocá cada tarjeta para explorar los estilos de páginas que armamos.</p>
+                </div>
+            </div>
+
+            <div class="carrusel-wrapper" id="carousel-area">
+                <div class="carrusel">
+                    <label class="carrusel-card proyecto-1">
+                        <input class="input1" type="radio" name="proyecto" checked>
+                        <div class="card-info">
+                            <span class="tag">Diseño Web</span>
+                            <h4>Identidad & Portafolio</h4>
+                            <p>Diseño moderno en modo oscuro con animaciones fluidas y carga instantánea.</p>
+                            <a href="servicios.html" class="card-cta-btn">Ver tarifas de este estilo ➔</a>
+                        </div>
+                    </label>
+
+                    <label class="carrusel-card proyecto-2">
+                        <input class="input2" type="radio" name="proyecto">
+                        <div class="card-info">
+                            <span class="tag">Negocio Local</span>
+                            <h4>Landing Page Comercial</h4>
+                            <p>Estructura pensada para posadas, tiendas y servicios que buscan clientes por WhatsApp.</p>
+                            <a href="servicios.html" class="card-cta-btn">Cotizar Landing Page ➔</a>
+                        </div>
+                    </label>
+
+                    <label class="carrusel-card proyecto-3">
+                        <input class="input3" type="radio" name="proyecto">
+                        <div class="card-info">
+                            <span class="tag">Catálogo & QR</span>
+                            <h4>Web para Gastronomía</h4>
+                            <p>Menú digital interactivo con precios claros, ofertas y acceso rápido desde celulares.</p>
+                            <a href="servicios.html" class="card-cta-btn">Consultar por catálogo ➔</a>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="carrusel-controles">
+                    <button class="ctrl-btn" id="prev-slide" aria-label="Proyecto anterior">❮</button>
+                    <div class="carrusel-dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                    <button class="ctrl-btn" id="next-slide" aria-label="Siguiente proyecto">❯</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCION CONTACTO -->
+        <section id="contacto" class="seccion-contenedor reveal">
+            <div class="seccion-cabecera">
+                <div>
+                    <h2>Contacto <span class="Blue">Directo</span></h2>
+                    <p>¿Tenés una idea o querés una web para tu negocio? Escribinos sin compromiso.</p>
+                </div>
+            </div>
+
+            <div class="contactos-container">
+                <a href="mailto:thiagomastandrea12@gmail.com" class="contacto-item">
+                    <img src="email.svg" alt="Email">
+                    <span>thiagomastandrea12@gmail.com</span>
+                </a>
+
+                <a href="https://wa.me/59899123456" target="_blank" class="contacto-item">
+                    <img src="whatsapp (2).svg" alt="WhatsApp">
+                    <span>+598 99 123 456</span>
+                </a>
+
+                <a href="servicios.html" class="contacto-item">
+                    <img src="ubicacion.svg" alt="Ubicación">
+                    <span>Uruguay — Ver Tarifas y Planes</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 <strong>Calix<span class="Blue">Dev</span></strong>. Desarrollo web en Uruguay. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Menu movil y barra superior
+        const header = document.getElementById('main-header');
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = navMenu.querySelectorAll('a');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // Control interactivo del carrusel
+        const radios = [
+            document.querySelector('.input1'),
+            document.querySelector('.input2'),
+            document.querySelector('.input3')
+        ];
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+        const carouselArea = document.getElementById('carousel-area');
+        let currentIndex = 0;
+        let autoSlideTimer;
+
+        function setSlide(index) {
+            currentIndex = (index + radios.length) % radios.length;
+            radios[currentIndex].checked = true;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            setSlide(currentIndex - 1);
+            resetTimer();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            setSlide(currentIndex + 1);
+            resetTimer();
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                setSlide(parseInt(dot.dataset.index, 10));
+                resetTimer();
+            });
+        });
+
+        radios.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                if (radio.checked) {
+                    currentIndex = index;
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentIndex);
+                    });
+                    resetTimer();
+                }
+            });
+        });
+
+        function startTimer() {
+            autoSlideTimer = setInterval(() => {
+                setSlide(currentIndex + 1);
+            }, 4500);
+        }
+
+        function resetTimer() {
+            clearInterval(autoSlideTimer);
+            startTimer();
+        }
+
+        carouselArea.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+        carouselArea.addEventListener('mouseleave', startTimer);
+        startTimer();
+
+        // Aparicion suave al bajar
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
