@@ -454,7 +454,10 @@
         .proyecto-3 {
             background-image: 
                 linear-gradient(to top, rgba(3, 9, 19, 0.96) 20%, rgba(16, 185, 129, 0.1) 100%),
+                url("gastronomia-captura.webp"),
                 radial-gradient(circle at top left, #0f355c, #081525 70%);
+            background-position: left top;
+            background-size: cover;
         }
 
         .tag {
@@ -496,6 +499,11 @@
             opacity: 0;
             transform: translateY(10px);
             transition: all 0.3s ease;
+        }
+
+        .card-cta-btn + .card-cta-btn {
+            margin-left: 8px;
+            margin-top: 6px;
         }
 
         .carrusel:has(.input1:checked) .proyecto-3,
@@ -823,6 +831,7 @@
                             <h4>Web para Gastronomía</h4>
                             <p>Menú digital interactivo con precios claros, ofertas y acceso rápido desde celulares.</p>
                             <a href="servicios.html" class="card-cta-btn">Consultar por catálogo ➔</a>
+                            <a href="https://ftcalixdev.github.io/gastronomia-demo/#reservas" target="_blank" rel="noopener" class="card-cta-btn">Ver página de gastronomía ➔</a>
                         </div>
                     </label>
                 </div>
